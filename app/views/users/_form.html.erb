@@ -1,0 +1,42 @@
+<%= form_with(model: user) do |form| %>
+  <% if user.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+        <% user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :user_name, style: "display: block" %>
+    <%= form.text_field :user_name %>
+  </div>
+
+  <div>
+    <%= form.label :full_name, style: "display: block" %>
+    <%= form.text_field :full_name %>
+  </div>
+
+  <div>
+    <%= form.fields_for :addresses do |t| %>
+      <%= render "address_fields", :f => t %>
+    <% end %>
+    <div>
+      <br>
+      <%= link_to_add_association "Add Address", form, :addresses %> <!-- (*) -->
+    </div>
+  </div>
+
+  <div>
+    <%= form.label :profile_pic, style: "display: block" %>
+    <%= form.file_field :profile_pic %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
