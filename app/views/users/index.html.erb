@@ -1,14 +1,23 @@
-<p style="color: green"><%= notice %></p>
+<div class="ms-5">
+  <h1>User</h1>
 
-<h1>Users</h1>
+  <div id="users">
+    <%= image_tag(url_for(current_user.profile_pic)) %>
 
-<div id="users">
-  <% @users.each do |user| %>
-    <%= render user %>
     <p>
-      <%= link_to "Show this user", user %>
+      <strong>User name:</strong>
+      <%= current_user.user_name %>
     </p>
-  <% end %>
-</div>
 
-<%= link_to "New user", new_user_path %>
+    <p>
+      <strong>Full name:</strong>
+      <%= current_user.full_name %>
+    </p>
+
+    <p>
+      <%= link_to "Add more details", edit_user_path(current_user) %>
+    </p>
+  </div>
+
+  <%= button_to "logout", destroy_user_session_path, method: :delete  %>
+</div>

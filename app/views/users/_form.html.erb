@@ -12,16 +12,6 @@
   <% end %>
 
   <div>
-    <%= form.label :user_name, style: "display: block" %>
-    <%= form.text_field :user_name %>
-  </div>
-
-  <div>
-    <%= form.label :full_name, style: "display: block" %>
-    <%= form.text_field :full_name %>
-  </div>
-
-  <div>
     <%= form.fields_for :addresses do |t| %>
       <%= render "address_fields", :f => t %>
     <% end %>
@@ -32,7 +22,15 @@
   </div>
 
   <div>
-    <%= form.label :profile_pic, style: "display: block" %>
+    <%= form.label :profile_pic do %>
+      <% if form.object.profile_pic.attached? %>
+        The currently attached profile picture is <br /> 
+        <%= image_tag(url_for(form.object.profile_pic)) %><br />
+        Click here to replace this file.
+      <% else %>
+        No file has been uploaded yet. Please pick a file.
+      <% end %>
+    <% end %>
     <%= form.file_field :profile_pic %>
   </div>
 

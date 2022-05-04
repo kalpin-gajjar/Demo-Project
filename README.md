@@ -1,24 +1,11 @@
-# README
+Simple demo project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ruby version: 3.0.0
 
-Things you may want to cover:
+rails version: 7.0.2
 
-* Ruby version
+Divise gem authentication with confirmation email functionality
 
-* System dependencies
+Nested Form using cocoon gem
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+File Upload using Active Storage
