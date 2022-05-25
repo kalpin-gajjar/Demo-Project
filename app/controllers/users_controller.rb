@@ -50,6 +50,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def delete_image
+    current_user.pic[params[:pic_id].to_i].purge
+    redirect_to users_path
+  end
+
   # # DELETE /users/1 or /users/1.json
   # def destroy
   #   @user.destroy
@@ -67,6 +72,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:user_name, :full_name, :profile_pic, addresses_attributes: [:id, :address, :city, :state, :_destroy])
+      params.require(:user).permit(:user_name, :full_name, pic: [], addresses_attributes: [:id, :address, :city, :state, :_destroy])
     end
 end

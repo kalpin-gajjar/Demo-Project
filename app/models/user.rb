@@ -1,14 +1,14 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  validates :profile_pic, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'], size: {between: 1.kilobyte..3.megabytes, message: 'is not given between size'}
+  validates :pic, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'], size: {between: 1.kilobyte..3.megabytes, message: 'is not given between size'}
 
   after_create :assign_default_address
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
-  has_one_attached :profile_pic
+  has_many_attached :pic
   has_many :addresses, dependent: :destroy
   accepts_nested_attributes_for :addresses
 

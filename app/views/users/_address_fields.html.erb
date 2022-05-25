@@ -7,5 +7,19 @@
 
   <%= f.label "State" %>
   <%= f.text_field :state %>
+  
   <%= link_to_remove_association "Delete", f %>
+
+  
 </div>
+
+<script>
+const id = <%= %>
+  $('#user_addresses_attributes_<%=  %>_state').on('change', function() {
+    // Set selected option as variable
+    var selectValue = $(this).val();
+    // Empty the target field
+    $('#user_addresses_attributes_0_city').disable();
+    
+    
+</script>

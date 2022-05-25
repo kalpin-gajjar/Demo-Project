@@ -22,16 +22,18 @@
   </div>
 
   <div>
-    <%= form.label :profile_pic do %>
-      <% if form.object.profile_pic.attached? %>
-        The currently attached profile picture is <br /> 
-        <%= image_tag(url_for(form.object.profile_pic)) %><br />
+    <%= form.label :picture do %>
+      <% if form.object.pic.attached? %>
+        The currently attached pictures is <br /> 
+        <% form.object.pic.each do |p| %>
+          <%= image_tag(url_for(p)) %><br />
+        <% end %>
         Click here to replace this file.
       <% else %>
         No file has been uploaded yet. Please pick a file.
       <% end %>
     <% end %>
-    <%= form.file_field :profile_pic %>
+    <%= form.file_field :pic, multiple: true %>
   </div>
 
   <div>

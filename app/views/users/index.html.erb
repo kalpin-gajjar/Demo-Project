@@ -2,7 +2,12 @@
   <h1>User</h1>
 
   <div id="users">
-    <%= image_tag(url_for(current_user.profile_pic)) %>
+    <% current_user.pic.each_with_index do |p, i| %>
+      <div class="d-flex align-items-center my-2">
+        <%= image_tag(url_for(p)) %>
+        <%= button_to "Delete Image", user_delete_pic_path(pic_id: i) %>
+      </div>
+    <% end %>
 
     <p>
       <strong>User name:</strong>
